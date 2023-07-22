@@ -9,22 +9,20 @@ const buttonCoffee = document.querySelector('.coffee');
 const buttonFirePlace = document.querySelector('.fireplace');
 const minutesDisplay = document.querySelector('.minutes');
 const secondsDisplay = document.querySelector('.seconds');
+const toggleModeButton = document.getElementById('toggleMode');
+
 
 let timerTimeOut;
 let minutes = Number(minutesDisplay.textContent);
 let seconds = Number(secondsDisplay.textContent);
 
-let path1Forest = document.getElementById('path1Forest');
-let path2Forest = document.getElementById('path2Forest');
+let pathForest = document.getElementById('pathForest');
 
-let path1Rain = document.getElementById('path1Rain');
-let path2Rain = document.getElementById('path2Rain');
+let pathRain = document.getElementById('pathRain');
 
-let path1Coffee = document.getElementById('path1Coffee');
-let path2Coffee = document.getElementById('path2Coffee');
+let pathCoffee = document.getElementById('pathCoffee');
 
-let path1FirePlace = document.getElementById('path1FirePlace');
-let path2FirePlace = document.getElementById('path2FirePlace');
+let pathFirePlace = document.getElementById('pathFirePlace');
 
 const soundForest = new Audio("./Songs/Floresta.wav");
 const soundRain = new Audio("./Songs/Chuva.wav");
@@ -43,14 +41,11 @@ let b = 0;
 let c = 0;
 let d = 0;
 function cardReset(){
-  path1Forest.style.fill = "#E1E1E6";
-  path2Forest.style.fill = "#000000";
-  path1Rain.style.fill = "#E1E1E6";
-  path2Rain.style.fill = "#000000";
-  path1Coffee.style.fill = "#E1E1E6";
-  path2Coffee.style.fill = "#000000";
-  path1FirePlace.style.fill = "#E1E1E6";
-  path2FirePlace.style.fill = "#000000";
+  buttonForest.classList.remove('active-card');
+  buttonRain.classList.remove('active-card');
+  buttonCoffee.classList.remove('active-card');
+  buttonFirePlace.classList.remove('active-card');
+  
   soundForest.pause();
   soundRain.pause();
   soundCoffee.pause();
@@ -67,7 +62,7 @@ function updateDisplay(newMinutes, newSeconds) {
 };
 
 function countdonw(){
-   timerTimeOut = setTimeout(() => {
+    timerTimeOut = setTimeout(() => {
     let minutes = Number(minutesDisplay.textContent);
     let seconds = Number(secondsDisplay.textContent);
 
@@ -140,8 +135,7 @@ buttonForest.addEventListener('click', () => {
     return;
   };
   cardReset();
-  path1Forest.style.fill = "#02799D";
-  path2Forest.style.fill = "#FFFFFF";
+  buttonForest.classList.add('active-card');
   soundForest.play();
   a++;
 });
@@ -152,8 +146,7 @@ buttonRain.addEventListener('click', () => {
     return;
   };
   cardReset();
-  path1Rain.style.fill = "#02799D";
-  path2Rain.style.fill = "#FFFFFF";
+  buttonRain.classList.add('active-card');
   soundRain.play();
   b++;
 });
@@ -163,8 +156,7 @@ buttonCoffee.addEventListener('click', () => {
     return;
   };
   cardReset();
-  path1Coffee.style.fill = "#02799D";
-  path2Coffee.style.fill = "#FFFFFF";
+  buttonCoffee.classList.add('active-card');
   soundCoffee.play();
   c++;
 });
@@ -174,8 +166,10 @@ buttonFirePlace.addEventListener('click', () => {
     return;
   }
   cardReset();
-  path1FirePlace.style.fill = "#02799D";
-  path2FirePlace.style.fill = "#FFFFFF";
+  buttonFirePlace.classList.add('active-card');
   soundFirePlace.play();
   d++;
+});
+toggleModeButton.addEventListener ('click', () => {
+  document.documentElement.classList.toggle('darkMode');
 });

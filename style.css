@@ -6,20 +6,47 @@
 }
 
 :root {
-  --bg-color: #323238;
-  --card-color: #02799D;
+  --bg-color: #ffffff;
+  --text-color: #323238;
+  --button-color: #323238;
+  --card-color:#E1E1E6;
+  --card-fill-color: black;
   font-size: 62.5%;
+}
+
+html.darkMode {
+  --bg-color: #121214;
+  --text-color: white;
+  --card-color: #29292E;
+  --card-fill-color: #C4C4CC;
+  --button-color: #C4C4CC;
+}
+
+.active-card {
+  --card-color: #02799D;
+  --card-fill-color: white;
 }
 
 .page {
     display: flex;
+    height: 100vh;
     align-items: center; 
     justify-content: center;
-    gap: 19.2rem; 
-    padding: 15rem 0;
+    gap: 19.2rem;
+    background-color: var(--bg-color);
 }
 
-.hide {
+#toggleMode {
+  position: absolute;
+  right: 3.2rem;
+  top: 3.2rem;
+  font-size: 3.2rem;
+  line-height: 0;
+}
+
+.hide,
+html.darkMode .moon,
+html:not(.darkMode) .sun{
   display: none;
 }
 
@@ -30,11 +57,19 @@ button {
   cursor: pointer;
 }
 
+.controls button svg path {
+  fill: var(--button-color);
+}
+
+.card svg path {
+  fill: var(--card-fill-color);
+}
+
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4.8rem;
+  gap: 1.3rem;
 }
 
 main .timer {
@@ -42,7 +77,7 @@ main .timer {
   font-size: 12.6rem;
   font-weight: 500;
 
-  color: var(--bg-color);
+  color: var(--text-color);
 }
 
 main .controls {
@@ -59,12 +94,6 @@ cards {
 cards button {
   width: 13.8rem;
   height: 15.2rem;
+  border-radius: 24px;
+  background-color: var(--card-color);
 }
-
-/*cards button:active svg path {
-  fill: var(--card-color);
-}
-cards button:active svg path:nth-child(2) {
-  fill:white;
-}*/
-
