@@ -10,7 +10,10 @@ const buttonFirePlace = document.querySelector('.fireplace');
 const minutesDisplay = document.querySelector('.minutes');
 const secondsDisplay = document.querySelector('.seconds');
 const toggleModeButton = document.getElementById('toggleMode');
-
+let volumeForest = document.getElementById('volumeControlForest');
+let volumeRain = document.getElementById('volumeControlRain');
+let volumeCoffee = document.getElementById('volumeControlcoffee');
+let volumeFirePlace = document.getElementById('volumeControlFireplace');
 
 let timerTimeOut;
 let minutes = Number(minutesDisplay.textContent);
@@ -150,6 +153,7 @@ buttonRain.addEventListener('click', () => {
   soundRain.play();
   b++;
 });
+
 buttonCoffee.addEventListener('click', () => {
   if(c ==! 0){
     cardReset();
@@ -160,6 +164,7 @@ buttonCoffee.addEventListener('click', () => {
   soundCoffee.play();
   c++;
 });
+
 buttonFirePlace.addEventListener('click', () => {
   if(d ==! 0){
     cardReset();
@@ -170,6 +175,23 @@ buttonFirePlace.addEventListener('click', () => {
   soundFirePlace.play();
   d++;
 });
+
 toggleModeButton.addEventListener ('click', () => {
   document.documentElement.classList.toggle('darkMode');
+});
+
+volumeForest.addEventListener('input', () => {
+  soundForest.volume = volumeForest.value;
+});
+
+volumeRain.addEventListener('input', () => {
+  soundRain.volume = volumeRain.value;
+});
+
+volumeCoffee.addEventListener('input', () => {
+  soundCoffee.volume = volumeCoffee.value;
+});
+
+volumeFirePlace.addEventListener('input', () => {
+  soundFirePlace.volume = volumeFirePlace.value;
 });
